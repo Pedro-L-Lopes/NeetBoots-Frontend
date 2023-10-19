@@ -5,8 +5,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Pages
 import Home from "./pages/Products/Home";
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
+import Login from "./pages/ClientAuth/Login";
+import Register from "./pages/ClientAuth/Register";
 
 function App() {
   return (
