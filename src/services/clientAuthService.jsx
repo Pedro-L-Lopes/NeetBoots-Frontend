@@ -12,6 +12,8 @@ const registerClient = async (data) => {
     if (res) {
       localStorage.setItem("cliente", JSON.stringify(res));
     }
+
+    return res;
   } catch (error) {
     console.log(error);
   }

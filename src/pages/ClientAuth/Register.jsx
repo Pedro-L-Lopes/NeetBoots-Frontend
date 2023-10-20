@@ -1,5 +1,6 @@
 // Components
 import { Link } from "react-router-dom";
+import Message from "../../components/Message/Message";
 
 // Hooks
 import { useState, useEffect } from "react";
@@ -116,8 +117,9 @@ const Register = () => {
             Outro
           </label>
         </div>
-
-        <input type="submit" value="Cadastrar" />
+        {!loading && <input type="submit" value="Cadastrar" />}
+        {loading && <input type="submit" value="Carregando" disabled />}
+        {error && <Message msg={error} type="error" />}
       </form>
     </div>
   );
