@@ -20,6 +20,13 @@
   font-size: 0.5em;
 }
 
+.titulo1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
 .titulo2 {
   font-size: 0.8em;
 }
