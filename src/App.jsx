@@ -8,13 +8,10 @@ import { useAuth } from "./hooks/useAuth";
 
 // Pages
 import Home from "./pages/Products/Home";
-import Login from "./pages/ClientAuth/Login";
-import Register from "./pages/ClientAuth/Register";
+import Auth from "./pages/ClientAuth/Auth";
 
 function App() {
   const { auth, loading } = useAuth();
-
-  console.log("teste" + auth);
 
   if (loading) {
     return <p>Carregando...</p>;
@@ -25,8 +22,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={!auth ? <Login /> : <Home />} />
-          <Route path="/register" element={!auth ? <Register /> : <Home />} />
+          <Route path="/authentication" element={!auth ? <Auth /> : <Home />} />
         </Routes>
       </BrowserRouter>
     </div>

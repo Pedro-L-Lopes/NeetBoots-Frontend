@@ -10,11 +10,30 @@ const initialState = {
   loading: false,
 };
 
-// Registrando e logando cliente
+// Registrando e entrando na cont
 export const registerClient = createAsyncThunk(
   "auth/registerClient",
   async (client, thunkAPI) => {
     const data = await authService.registerClient(client);
+
+    if (data.errors) {
+      return thunkAPI.rejectWithValue(data.errors[0]);
+    }
+
+    return data;
+  }
+);
+
+// Sair da conta
+export const logout = createAsyncThunk("auth/logouClient", () => {
+  authService.logout();
+});
+
+// Entrando na conta
+export const loginClient = createAsyncThunk(
+  "auth/loginClient",
+  async (client, thunkAPI) => {
+    const data = await authService.login(client);
 
     if (data.errors) {
       return thunkAPI.rejectWithValue(data.errors[0]);
@@ -47,6 +66,27 @@ export const authSlice = createSlice({
         state.client = action.payload;
       })
       .addCase(registerClient.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.client = null;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = false;
+        state.client = null;
+      })
+      .addCase(loginClient.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(loginClient.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = false;
+        state.client = action.payload;
+      })
+      .addCase(loginClient.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
         state.client = null;
