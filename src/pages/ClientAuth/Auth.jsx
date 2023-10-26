@@ -5,7 +5,7 @@ import Register from "./Register";
 
 const Auth = () => {
   return (
-    <div>
+    <div className="bg-blue-600">
       <Login />
       <Register />
     </div>

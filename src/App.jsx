@@ -18,7 +18,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

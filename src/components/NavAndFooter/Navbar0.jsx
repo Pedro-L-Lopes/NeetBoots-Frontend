@@ -27,25 +27,23 @@ const Navbar0 = () => {
   };
 
   return (
-    <nav className="fle">
-      <div className="text-white">
+    <nav className="flex justify-between items-center bg-sBlack h-8">
+      <div className="text-white ml-2">
         <h1>O melhor está aqui</h1>
       </div>
       {auth ? (
         <>
-          <div className="titulo1">
+          <div className="flex gap-2 text-white mr-2">
             <Link to="/">Ajuda</Link>
+            <p>|</p>
             {client && (
               <p>
                 <NavLink to={`/clients/${client.id}`}>Minha conta</NavLink>
               </p>
             )}
-            <p>
-              <NavLink to={`/profile`}>Profile</NavLink>
-            </p>
-            <span onClick={handleLogout} className="sair">
+            {/* <span onClick={handleLogout} className="sair">
               Sair
-            </span>
+            </span> */}
           </div>
         </>
       ) : (
