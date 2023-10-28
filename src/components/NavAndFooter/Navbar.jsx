@@ -13,10 +13,10 @@ const Navbar = () => {
   return (
     <>
       <Navbar0 />
-      <nav className="flex items-center justify-between bg-pBlack h-16">
+      <nav className="flex items-center justify-between bg-pBlack h-20">
         <div className="ml-2">
           <Link to="/">
-            <img width={70} src={logo} alt="Logo NeetBoots" />
+            <img width={100} src={logo} alt="Logo NeetBoots" />
           </Link>
         </div>
         <div>

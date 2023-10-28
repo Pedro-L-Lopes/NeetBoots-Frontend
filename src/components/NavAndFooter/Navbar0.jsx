@@ -38,7 +38,7 @@ const Navbar0 = () => {
             <p>|</p>
             {client && (
               <p>
-                <NavLink to={`/clients/${client.id}`}>Minha conta</NavLink>
+                <NavLink to={`/account`}>Minha conta</NavLink>
               </p>
             )}
             {/* <span onClick={handleLogout} className="sair">
