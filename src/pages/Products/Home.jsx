@@ -7,6 +7,7 @@ import { getAllProducts } from "../../slices/productSlice";
 
 // Components
 import Navbar from "../../components/NavAndFooter/Navbar";
+import ProductCard from "../../components/Product/ProductCard";
 
 // Image
 import jordan from "../../assets/Images/home/jordan3.png";
@@ -42,14 +43,10 @@ const Home = () => {
       <div>
         {products.data && products.data.length > 0 ? (
           products.data.map((product) => (
-            <div key={product.id_produto}>
-              <h2>{product.nome}</h2>
-              <p>{product.descricao}</p>
-              <hr />
-            </div>
+            <ProductCard key={product.id_produto} product={product} />
           ))
         ) : (
-          <p>Nenhum produto disponível.</p>
+          <p>Não foram encontrados produtos!</p>
         )}
       </div>
     </main>

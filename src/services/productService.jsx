@@ -15,8 +15,28 @@ const getAllProducts = async () => {
   }
 };
 
+const searchProducts = async (query, limit = 20, offset = 0) => {
+  const config = requestConfig("GET");
+
+  try {
+    const encodedQuery = encodeURIComponent(query);
+    const res = await fetch(
+      api +
+        `/produtos/searchProducts?q=${encodedQuery}&limit=${limit}&offset=${offset}`,
+      config
+    )
+      .then((res) => res.json())
+      .catch((err) => err);
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const productService = {
   getAllProducts,
+  searchProducts,
 };
 
 export default productService;

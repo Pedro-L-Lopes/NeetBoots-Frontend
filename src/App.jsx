@@ -9,6 +9,7 @@ import { useAuth } from "./hooks/useAuth";
 // Pages
 import Home from "./pages/Products/Home";
 import Auth from "./pages/ClientAuth/Auth";
+import Search from "./pages/Products/Search";
 
 function App() {
   const { auth, loading } = useAuth();
@@ -22,6 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/authentication" element={!auth ? <Auth /> : <Home />} />
         </Routes>
       </BrowserRouter>
