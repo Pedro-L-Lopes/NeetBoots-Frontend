@@ -41,14 +41,14 @@ const Navbar0 = () => {
                 <NavLink to={`/account`}>Minha conta</NavLink>
               </p>
             )}
-            {/* <span onClick={handleLogout} className="sair">
+            <span onClick={handleLogout} className="sair">
               Sair
-            </span> */}
+            </span>
           </div>
         </>
       ) : (
         <>
-          <div className="titulo2">
+          <div className="flex gap-2 text-white mr-2">
             Ajuda | Junte-se a nós | <Link to="/authentication">Entrar</Link>
           </div>
         </>

@@ -13,7 +13,7 @@ const initialState = {
 // Pegar todos os produtos
 export const getAllProducts = createAsyncThunk("product/getAll", async () => {
   const data = await productService.getAllProducts();
-
+  console.log("Teste " + data); // Adicione este log
   return data;
 });
 
@@ -21,6 +21,15 @@ export const searchProducts = createAsyncThunk(
   "products/search",
   async (query, limit, offset) => {
     const data = await productService.searchProducts(query, limit, offset);
+
+    return data;
+  }
+);
+
+export const promotionProducts = createAsyncThunk(
+  "product/promotions",
+  async () => {
+    const data = await productService.promotionProducts();
 
     return data;
   }
@@ -51,6 +60,16 @@ export const productSlice = createSlice({
         state.error = false;
       })
       .addCase(searchProducts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+        state.products = action.payload;
+      })
+      .addCase(promotionProducts.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(promotionProducts.fulfilled, (state, action) => {
         state.loading = false;
         state.success = true;
         state.error = null;

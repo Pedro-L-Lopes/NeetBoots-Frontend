@@ -2,52 +2,69 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-// Redeux
-import { getAllProducts } from "../../slices/productSlice";
+// Redux
+import { promotionProducts } from "../../slices/productSlice";
 
 // Components
 import Navbar from "../../components/NavAndFooter/Navbar";
 import ProductCard from "../../components/Product/ProductCard";
+import ImageCarousel from "../../components/Carousel/Carousel";
 
 // Image
-import jordan from "../../assets/Images/home/jordan3.png";
+import banner from "../../assets/Images/home/banner.jpg";
+import futebol from "../../assets/Images/home/Futebol.jpg";
 
 const Home = () => {
   const { products, loading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllProducts());
+    dispatch(promotionProducts());
   }, [dispatch]);
 
   if (loading) {
     return <p>Carregando...</p>;
   }
 
+  const carouselImages = [banner, futebol];
+
+  console.log(products);
+
   return (
     <main>
       <Navbar />
-      <div className="flex items-center justify-center w-full bg-sBlack h-96">
-        <div className="flex flex-col gap-2">
-          <p className="font-extrabold text-white">Air Jordan 1 Retro</p>
-          <div className="text-center font-extrabold rounded-sm bg-white p-2">
-            Compre agora
-          </div>
+      <div className="flex items-center justify-center p-2 bg-gray-200">
+        <p>Frete grátis</p>
+      </div>
+      <ImageCarousel images={carouselImages} />
+      <div className="m-16">
+        <div className="flex gap-2">
+          {products && products.length > 0 ? (
+            products.map((product) => (
+              <ProductCard key={product.id_produto} product={product} />
+            ))
+          ) : (
+            <p>Não foram encontrados produtos!</p>
+          )}
         </div>
+      </div>
+      <div className="">
         <img
-          src={jordan}
-          style={{ maxHeight: "80vh", width: "25%" }}
+          src={futebol}
+          style={{ maxHeight: "80vh", width: "100%" }}
           alt="Banner com frase"
         />
       </div>
-      <div>
-        {products.data && products.data.length > 0 ? (
-          products.data.map((product) => (
-            <ProductCard key={product.id_produto} product={product} />
-          ))
-        ) : (
-          <p>Não foram encontrados produtos!</p>
-        )}
+      <div className="m-16">
+        <div className="flex gap-2">
+          {products && products.length > 0 ? (
+            products.map((product) => (
+              <ProductCard key={product.id_produto} product={product} />
+            ))
+          ) : (
+            <p>Não foram encontrados produtos!</p>
+          )}
+        </div>
       </div>
     </main>
   );

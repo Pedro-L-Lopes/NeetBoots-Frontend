@@ -34,9 +34,24 @@ const searchProducts = async (query, limit = 20, offset = 0) => {
   }
 };
 
+const promotionProducts = async () => {
+  const config = requestConfig("GET");
+
+  try {
+    const res = await fetch(api + "/produtos/promotion", config)
+      .then((res) => res.json())
+      .catch((err) => err);
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const productService = {
   getAllProducts,
   searchProducts,
+  promotionProducts,
 };
 
 export default productService;

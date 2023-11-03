@@ -29,7 +29,7 @@ const Search = () => {
       <div>
         <h2>Resultados para: {search}</h2>
       </div>
-      <div>
+      <div className="flex gap-2">
         {products.data && products.data.length > 0 ? (
           products.data.map((product) => (
             <ProductCard key={product.id_produto} product={product} />
