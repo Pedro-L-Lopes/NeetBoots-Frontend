@@ -14,6 +14,11 @@ import ImageCarousel from "../../components/Carousel/Carousel";
 import banner from "../../assets/Images/home/banner.jpg";
 import futebol from "../../assets/Images/home/Futebol.jpg";
 
+// Icons
+import { RiCoupon2Line } from "react-icons/ri";
+import { LiaShippingFastSolid } from "react-icons/lia";
+import Carouselcoupon from "../../components/Carousel/carouselcoupon";
+
 const Home = () => {
   const { products, loading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
@@ -26,16 +31,27 @@ const Home = () => {
     return <p>Carregando...</p>;
   }
 
-  const carouselImages = [banner, futebol];
+  const carouselImages = [
+    { image: banner, link: "/promotion" },
+    { image: futebol, link: "/categorias" },
+  ];
 
-  console.log(products);
+  const carouselCoupons = [
+    {
+      icon: <RiCoupon2Line size={25} />,
+      text: "Frete grátis nas compras acima de R$ 199,99",
+      link: "/",
+    },
+    {
+      icon: <LiaShippingFastSolid size={25} />,
+      text: "20% de desconto com o cupom: gordaometodologias",
+      link: "/",
+    },
+  ];
 
   return (
     <main>
       <Navbar />
-      <div className="flex items-center justify-center p-2 bg-gray-200">
-        <p>Frete grátis</p>
-      </div>
       <ImageCarousel images={carouselImages} />
       <div className="m-16">
         <div className="flex gap-2">
@@ -48,10 +64,12 @@ const Home = () => {
           )}
         </div>
       </div>
-      <div className="">
+      <Carouselcoupon itens={carouselCoupons} />
+      <div className="flex items-center justify-center">
         <img
           src={futebol}
-          style={{ maxHeight: "80vh", width: "100%" }}
+          className="object-cover"
+          style={{ maxHeight: "20vh", width: "70%" }}
           alt="Banner com frase"
         />
       </div>

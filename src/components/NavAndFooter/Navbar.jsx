@@ -45,6 +45,7 @@ const Navbar = () => {
             <li>Feminino</li>
             <li>Futebol</li>
             <li>Corrida</li>
+            <li>Marcas</li>
           </ul>
         </div>
         <div className="flex items-center justify-between gap-14 mr-5">

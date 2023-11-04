@@ -1,43 +1,30 @@
 import React, { useState, useEffect } from "react";
-
-import "./Carousel.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 
 const ImageCarousel = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  useEffect(() => {
-    const intervalId = setInterval(nextSlide, 15000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
-
   return (
-    <div className="image-carousel">
-      <div className="carousel-container">
-        <button className="prev-button" onClick={prevSlide}>
-          &#8249;
-        </button>
-        <img
-          className="img-carousel"
-          src={images[currentIndex]}
-          alt={`Slide ${currentIndex}`}
-        />
-        <button className="next-button" onClick={nextSlide}>
-          &#8250;
-        </button>
-      </div>
+    <div>
+      <Swiper
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        navigation
+        loop={true}
+        autoplay={{ delay: 5000 }}
+      >
+        {images.map((item, index) => (
+          <SwiperSlide key={index}>
+            <Link to={item.link}>
+              <img
+                src={item.image}
+                alt="Slide"
+                className="cursor-pointer"
+                style={{ height: "80vh", width: "100%" }}
+              />
+            </Link>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
