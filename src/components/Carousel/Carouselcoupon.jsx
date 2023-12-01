@@ -10,15 +10,16 @@ const Carouselcoupon = ({ itens }) => {
           <SwiperSlide key={index}>
             <Link to={item.link}>
               <div
-                className="flex items-center justify-center p-4 m-2 gap-2 rounded-md bg-sBlack text-white text-lg  font-bold transition-colors duration-300 ease-out"
+                className="flex items-center justify-center p-4 m-2 gap-2 rounded-md  text-lg font-bold"
                 style={{
-                  height: "10vh",
+                  height: "5vh",
                   width: "100%",
-                  backgroundImage: "linear-gradient(to left, #381398, #ff9218)",
                 }}
               >
-                <div className="">{item.icon}</div>
-                <p>{item.text}</p>
+                <div className="flex items-center justify-center gap-2 p-5  rounded-md">
+                  <div className="">{item.icon}</div>
+                  <p>{item.text}</p>
+                </div>
               </div>
             </Link>
           </SwiperSlide>

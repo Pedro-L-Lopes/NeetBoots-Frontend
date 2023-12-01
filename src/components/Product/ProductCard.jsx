@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
             <p>R$ {product.preco}</p>
           ) : (
             <section className="flex gap-2">
-              <p className="opacity-30 line-through">R$ {product.preco}</p>{" "}
+              <p className="opacity-30 line-through">R$ {product.preco}</p>
               <p className="text-green-600">R$ {product.preco_promocional}</p>
             </section>
           )}
