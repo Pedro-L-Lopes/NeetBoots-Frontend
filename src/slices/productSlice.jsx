@@ -13,7 +13,6 @@ const initialState = {
 // Pegar todos os produtos
 export const getAllProducts = createAsyncThunk("product/getAll", async () => {
   const data = await productService.getAllProducts();
-  console.log("Teste " + data); // Adicione este log
   return data;
 });
 

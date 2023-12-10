@@ -13,7 +13,6 @@ const initialState = {
 // Pegar todos os produtos
 export const getAllBrands = createAsyncThunk("brand/getAll", async () => {
   const data = await brandService.getAllBrands();
-  console.log("Teste " + data);
   return data;
 });
 
